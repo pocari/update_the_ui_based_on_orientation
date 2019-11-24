@@ -19,14 +19,18 @@ class OrientationPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('orientation test'),
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          children: List.generate(
-            6,
-            (index) => Center(
-              child: Text(
-                "Item $index",
-                style: Theme.of(context).textTheme.headline,
+        body: OrientationBuilder(
+          builder: (context, orientation) => Container(
+            child: GridView.count(
+              crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+              children: List.generate(
+                6,
+                (index) => Center(
+                  child: Text(
+                    "Item $index",
+                    style: Theme.of(context).textTheme.headline,
+                  ),
+                ),
               ),
             ),
           ),
